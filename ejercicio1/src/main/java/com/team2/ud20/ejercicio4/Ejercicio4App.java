@@ -1,0 +1,111 @@
+package com.team2.ud20.ejercicio4;
+
+import java.awt.BorderLayout;
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+import javax.swing.JLabel;
+import javax.swing.JTextArea;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowFocusListener;
+import java.awt.event.WindowStateListener;
+
+public class Ejercicio4App extends JFrame {
+
+	private JPanel contentPane;
+	private String cadenaEventos = "";
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					Ejercicio4App frame = new Ejercicio4App();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the frame.
+	 */
+	public Ejercicio4App() {
+		
+		setTitle("Ejercicio 4 Eventos de la ventana");
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 450, 300);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
+		
+		JLabel lblNewLabel = new JLabel("Eventos");
+		lblNewLabel.setBounds(10, 124, 46, 14);
+		contentPane.add(lblNewLabel);
+		JTextArea textArea = new JTextArea();
+		textArea.setBounds(51, 11, 373, 239);
+		contentPane.add(textArea);
+		addWindowStateListener(new WindowStateListener() {
+			public void windowStateChanged(WindowEvent arg0) {
+				cadenaEventos += "Ventana.Ha cambiado de estado\n";
+				textArea.setText(cadenaEventos);
+			}
+		});
+		addWindowFocusListener(new WindowFocusListener() {
+			public void windowGainedFocus(WindowEvent arg0) {
+				cadenaEventos +="Ventana.Ha ganado el foco\n";
+				textArea.setText(cadenaEventos);
+			}
+			public void windowLostFocus(WindowEvent arg0) {
+				cadenaEventos +="Ventana.Ha perdido el foco\n";
+				textArea.setText(cadenaEventos);
+			}
+		});
+		addWindowListener(new WindowAdapter() {
+			@Override
+			public void windowActivated(WindowEvent arg0) {
+				cadenaEventos +="Ventana.Activada\n";
+				textArea.setText(cadenaEventos);
+			}
+			@Override
+			public void windowClosed(WindowEvent e) {
+				cadenaEventos += "Ventana.Se ha cerrado\n";
+				textArea.setText(cadenaEventos);
+			}
+			@Override
+			public void windowClosing(WindowEvent e) {
+				cadenaEventos +="Ventana.Se esta cerrando\n";
+				textArea.setText(cadenaEventos);
+			}
+			@Override
+			public void windowDeactivated(WindowEvent e) {
+				cadenaEventos += "Ventana.Desactivada\n";
+				textArea.setText(cadenaEventos);
+			}
+			@Override
+			public void windowDeiconified(WindowEvent e) {
+				cadenaEventos += "Ventana.Deiconificada\n";
+				textArea.setText(cadenaEventos);
+			}
+			@Override
+			public void windowIconified(WindowEvent e) {
+				cadenaEventos += "Ventana.Iconificada\n";
+				textArea.setText(cadenaEventos);
+			}
+			@Override
+			public void windowOpened(WindowEvent e) {
+				cadenaEventos += "Ventana.Abierta\n";
+				textArea.setText(cadenaEventos);
+			}
+			
+		});
+	}
+}
