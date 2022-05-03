@@ -1,4 +1,4 @@
-package com.team2.ud20.ejercicio6;
+package com.team2.ud20.ejercicio7;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
@@ -7,23 +7,20 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
-import java.text.DecimalFormat;
 import java.awt.event.ActionEvent;
 
-public class Ejercicio6App extends JFrame {
+public class Ejercicio7App extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField textField;
 	private JTextField textField_1;
-	private JTextField textField_2;
-	private double altura;
-	private double peso;
-	private double IMC;
-	
+	private boolean opcion = false;
+	private double euros;
+	private double pesetas;
+	private double resultado;
 
 	/**
 	 * Launch the application.
@@ -32,7 +29,7 @@ public class Ejercicio6App extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Ejercicio6App frame = new Ejercicio6App();
+					Ejercicio7App frame = new Ejercicio7App();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -44,8 +41,8 @@ public class Ejercicio6App extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public Ejercicio6App() {
-		setTitle("Calcular IMC");
+	public Ejercicio7App() {
+		setTitle("Conversor euros pesetas");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
@@ -53,54 +50,59 @@ public class Ejercicio6App extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JLabel lblNewLabel = new JLabel("Altura (metros):");
-		lblNewLabel.setBounds(10, 28, 95, 14);
+		JLabel lblNewLabel = new JLabel("Cantidad a convertir:");
+		lblNewLabel.setBounds(10, 24, 118, 14);
 		contentPane.add(lblNewLabel);
 		
 		textField = new JTextField();
-		textField.setBounds(95, 25, 68, 20);
+		textField.setBounds(130, 21, 66, 20);
 		contentPane.add(textField);
 		textField.setColumns(10);
 		
-		JLabel lblNewLabel_1 = new JLabel("Peso(kg):");
-		lblNewLabel_1.setBounds(209, 28, 78, 14);
+		JLabel lblNewLabel_1 = new JLabel("Resultado:");
+		lblNewLabel_1.setBounds(231, 24, 74, 14);
 		contentPane.add(lblNewLabel_1);
 		
 		textField_1 = new JTextField();
-		textField_1.setBounds(308, 25, 68, 20);
+		textField_1.setEnabled(false);
+		textField_1.setBounds(302, 21, 86, 20);
 		contentPane.add(textField_1);
 		textField_1.setColumns(10);
 		
-		JLabel lblNewLabel_2 = new JLabel("IMC");
-		lblNewLabel_2.setBounds(209, 67, 46, 14);
-		contentPane.add(lblNewLabel_2);
-		
-		textField_2 = new JTextField();
-		textField_2.setEnabled(false);
-		textField_2.setBounds(254, 64, 86, 20);
-		contentPane.add(textField_2);
-		textField_2.setColumns(10);
-		
-		JButton btnNewButton = new JButton("Calcular");
+		JButton btnNewButton = new JButton("Euros a Pesetas");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
 				try {
-					altura = Double.parseDouble(textField.getText());
-					peso = Double.parseDouble(textField_1.getText());
-					
-					IMC = peso/Math.pow(altura, 2);
-					
-					DecimalFormat formato = new DecimalFormat("#.##"); 
-					
-					
-					textField_2.setText(String.valueOf(formato.format(IMC)));
+					if(!opcion) {
+						pesetas = Double.parseDouble(textField.getText());
+					}else {
+						
+					}
 				} catch (Exception e2) {
-					JOptionPane.showMessageDialog(null, "Error en los numeros introducidos");
+					// TODO: handle exception
 				}
-			
+				
 			}
 		});
-		btnNewButton.setBounds(74, 63, 89, 23);
+		btnNewButton.setBounds(57, 63, 139, 23);
 		contentPane.add(btnNewButton);
+		
+		JButton btnNewButton_1 = new JButton("Cambiar");
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				if(!opcion) {
+					btnNewButton.setText("Pesetas a Euros");
+					opcion = true;
+				}else {
+					btnNewButton.setText("Euros a Pesetas");
+					opcion = false;
+				}
+			}
+		});
+		btnNewButton_1.setBounds(244, 63, 118, 23);
+		contentPane.add(btnNewButton_1);
 	}
+
 }

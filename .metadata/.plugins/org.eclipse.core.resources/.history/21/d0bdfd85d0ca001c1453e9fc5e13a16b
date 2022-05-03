@@ -90,7 +90,7 @@ public class Ejercicio6App extends JFrame {
 					
 					IMC = peso/Math.pow(altura, 2);
 					
-					DecimalFormat formato = new DecimalFormat("#.##"); 
+					DecimalFormat formato = new DecimalFormat("#.##");
 					
 					
 					textField_2.setText(String.valueOf(formato.format(IMC)));
