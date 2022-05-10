@@ -1,0 +1,126 @@
+package com.team2.ud20.ejercicio7;
+
+import java.awt.BorderLayout;
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JTextField;
+import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.text.DecimalFormat;
+import java.awt.event.ActionEvent;
+/**
+ * 
+ * UD20-Actividades - com.team2.ud20.ejercicio7 - Ejercicio7App
+ *
+ * @author Daniel Fernández Cacho
+ * @author Joan Hurtado García
+ * @author Jose Antonio González Alcántara
+ * 
+ * Fecha de creación 10/05/2022
+ */
+public class Ejercicio7App extends JFrame {
+
+	private JPanel contentPane;
+	private JTextField textField;
+	private JTextField textField_1;
+	private boolean opcion = false;
+	private double euros;
+	private double pesetas; 
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					Ejercicio7App frame = new Ejercicio7App();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the frame.
+	 */
+	public Ejercicio7App() {
+		setTitle("Conversor euros pesetas");
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 450, 300);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
+		
+		JLabel lblNewLabel = new JLabel("Cantidad a convertir:");
+		lblNewLabel.setBounds(10, 24, 118, 14);
+		contentPane.add(lblNewLabel);
+		
+		textField = new JTextField();
+		textField.setBounds(130, 21, 66, 20);
+		contentPane.add(textField);
+		textField.setColumns(10);
+		
+		JLabel lblNewLabel_1 = new JLabel("Resultado:");
+		lblNewLabel_1.setBounds(231, 24, 74, 14);
+		contentPane.add(lblNewLabel_1);
+		
+		textField_1 = new JTextField();
+		textField_1.setEnabled(false);
+		textField_1.setBounds(302, 21, 86, 20);
+		contentPane.add(textField_1);
+		textField_1.setColumns(10);
+		
+		JButton btnNewButton = new JButton("Pesetas a Euros");
+		//Accion para cambiar de pesetas a euros
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				DecimalFormat formato = new DecimalFormat("#.##"); 
+				
+				try {
+					//Si la condicion es falsa entra a pesetas a euros
+					if(!opcion) {
+						pesetas = Double.parseDouble(textField.getText());
+						euros = pesetas/166.386;
+						textField_1.setText(String.valueOf(formato.format(euros)));
+					}else {
+						euros = Double.parseDouble(textField.getText());
+						pesetas = euros * 166.386;
+						textField_1.setText(String.valueOf(formato.format(pesetas)));
+					}
+				} catch (Exception e2) {
+					// TODO: handle exception
+					JOptionPane.showMessageDialog(null, "Error en los numeros introducidos");
+				}
+				
+			}
+		});
+		btnNewButton.setBounds(57, 63, 139, 23);
+		contentPane.add(btnNewButton);
+		
+		JButton btnNewButton_1 = new JButton("Cambiar");
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				if(opcion) {
+					btnNewButton.setText("Pesetas a Euros");
+					opcion = false;
+				}else {
+					btnNewButton.setText("Euros a Pesetas");
+					opcion = true;
+				}
+			}
+		});
+		btnNewButton_1.setBounds(244, 63, 118, 23);
+		contentPane.add(btnNewButton_1);
+	}
+
+}

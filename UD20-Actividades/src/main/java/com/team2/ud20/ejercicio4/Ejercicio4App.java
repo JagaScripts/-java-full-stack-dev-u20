@@ -62,12 +62,17 @@ public class Ejercicio4App extends JFrame {
 		JTextArea textArea = new JTextArea();
 		textArea.setBounds(51, 11, 373, 239);
 		contentPane.add(textArea);
+		
+		//Listado de eventos
+		//Cuando se inicia la ventana
 		addWindowStateListener(new WindowStateListener() {
 			public void windowStateChanged(WindowEvent arg0) {
 				cadenaEventos += "Ventana.Ha cambiado de estado\n";
 				textArea.setText(cadenaEventos);
 			}
 		});
+		
+		//Cuando la ventana es el foco
 		addWindowFocusListener(new WindowFocusListener() {
 			public void windowGainedFocus(WindowEvent arg0) {
 				cadenaEventos +="Ventana.Ha ganado el foco\n";
@@ -78,37 +83,44 @@ public class Ejercicio4App extends JFrame {
 				textArea.setText(cadenaEventos);
 			}
 		});
+		//Cuando la ventana esta activada
 		addWindowListener(new WindowAdapter() {
 			@Override
 			public void windowActivated(WindowEvent arg0) {
 				cadenaEventos +="Ventana.Activada\n";
 				textArea.setText(cadenaEventos);
 			}
+			//Cuando se cierra la ventana
 			@Override
 			public void windowClosed(WindowEvent e) {
 				cadenaEventos += "Ventana.Se ha cerrado\n";
 				textArea.setText(cadenaEventos);
 			}
+			//Cuando se esta cerrando la ventana
 			@Override
 			public void windowClosing(WindowEvent e) {
 				cadenaEventos +="Ventana.Se esta cerrando\n";
 				textArea.setText(cadenaEventos);
 			}
+			//Cuando la ventana esta desactivada
 			@Override
 			public void windowDeactivated(WindowEvent e) {
 				cadenaEventos += "Ventana.Desactivada\n";
 				textArea.setText(cadenaEventos);
 			}
+			//Cuando la ventana esta deiconificada
 			@Override
 			public void windowDeiconified(WindowEvent e) {
 				cadenaEventos += "Ventana.Deiconificada\n";
 				textArea.setText(cadenaEventos);
 			}
+			//Cuando la ventana esta iconificada
 			@Override
 			public void windowIconified(WindowEvent e) {
 				cadenaEventos += "Ventana.Iconificada\n";
 				textArea.setText(cadenaEventos);
 			}
+			//Cuando la ventana se abre
 			@Override
 			public void windowOpened(WindowEvent e) {
 				cadenaEventos += "Ventana.Abierta\n";

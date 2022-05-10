@@ -53,12 +53,12 @@ public class Ejercicio2App extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JButton btnNewButton = new JButton("Boton 2");
+		JButton btnNewButton = new JButton("Boton 1");
 		
 		btnNewButton.setBounds(335, 227, 89, 23);
 		contentPane.add(btnNewButton);
 		
-		JButton btnNewButton_1 = new JButton("Boton 1");
+		JButton btnNewButton_1 = new JButton("Boton 2");
 		
 		btnNewButton_1.setBounds(10, 227, 89, 23);
 		contentPane.add(btnNewButton_1);
@@ -67,11 +67,13 @@ public class Ejercicio2App extends JFrame {
 		lblNewLabel.setBounds(34, 91, 357, 14);
 		contentPane.add(lblNewLabel);
 		
+		//Si se pulsa el boton 1 se setea el texto
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				lblNewLabel.setText("El último botón que se ha pusado el " +  btnNewButton.getText());
 			}
 		});
+		//Si se pulsa el boton 2 se setea el texto
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				lblNewLabel.setText("El último botón que se ha pusado el " +  btnNewButton_1.getText());

@@ -1,6 +1,5 @@
 package com.team2.ud20.ejercicio8;
 
-import java.awt.BorderLayout;
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -78,14 +77,17 @@ public class Ejercicio8App extends JFrame {
 		textField_1.setColumns(10);
 
 		JButton btnNewButton = new JButton("Pesetas a Euros");
+		//Si tiene el foco en el boton se realiza el calculo
 		btnNewButton.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyPressed(KeyEvent e) {
-				if (e.VK_ENTER == e.getKeyCode()) {
+				if (e.VK_ENTER == e.getKeyCode()) {//Apretando el enter
 					calcular();
 				}
 			}
 		});
+		
+		//Si pulsan el boton se realiza el calculo
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
@@ -98,11 +100,12 @@ public class Ejercicio8App extends JFrame {
 		contentPane.add(btnNewButton);
 
 		JButton btnNewButton_1 = new JButton("Cambiar");
+		//Si tiene el foco en el boton se realiza el cambio de monedas
 		btnNewButton_1.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyPressed(KeyEvent e) {
 
-				if (e.VK_ENTER == e.getKeyCode()) {
+				if (e.VK_ENTER == e.getKeyCode()) {//Apretando enter
 					if (opcion) {
 						btnNewButton.setText("Pesetas a Euros");
 						opcion = false;
@@ -113,6 +116,7 @@ public class Ejercicio8App extends JFrame {
 				}
 			}
 		});
+		//Si clickan al boton se hace el cambio de monedas
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
@@ -127,13 +131,14 @@ public class Ejercicio8App extends JFrame {
 		});
 
 		textField = new JTextField();
+		//Si tienen el foco en el textfield
 		textField.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyPressed(KeyEvent e) {
-				if (e.VK_ENTER == e.getKeyCode()) {
+				if (e.VK_ENTER == e.getKeyCode()) {//Se hace el calculo apretando el enter
 					calcular();
 					System.out.println("Hola");
-				} else if (e.VK_SHIFT == e.getKeyCode()) {
+				} else if (e.VK_SHIFT == e.getKeyCode()) {//Apretando shift se hace el cambio de monedas
 					if (opcion) {
 						btnNewButton.setText("Pesetas a Euros");
 						opcion = false;
@@ -153,6 +158,7 @@ public class Ejercicio8App extends JFrame {
 		contentPane.add(btnNewButton_1);
 
 		JButton btnNewButton_2 = new JButton("Borrar");
+		//Si clickan en el boton se borra el texto de los textfields
 		btnNewButton_2.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyPressed(KeyEvent e) {
@@ -172,6 +178,7 @@ public class Ejercicio8App extends JFrame {
 		contentPane.add(btnNewButton_2);
 	}
 
+	//Metodo para hacer la conversion
 	private void calcular() {
 		DecimalFormat formato = new DecimalFormat("#.##");
 
@@ -189,10 +196,6 @@ public class Ejercicio8App extends JFrame {
 			// TODO: handle exception
 			JOptionPane.showMessageDialog(null, "Error en los numeros introducidos");
 		}
-	}
-
-	private void cambiar() {
-
 	}
 
 }

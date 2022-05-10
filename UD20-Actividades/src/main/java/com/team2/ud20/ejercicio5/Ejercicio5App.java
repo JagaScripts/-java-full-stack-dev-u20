@@ -59,9 +59,10 @@ public class Ejercicio5App extends JFrame {
 		
 
 		JTextArea textArea = new JTextArea();
+		//Listado de eventos del raton
 		textArea.addMouseListener(new MouseAdapter() {
 			@Override
-			public void mouseClicked(MouseEvent e) {
+			public void mouseClicked(MouseEvent e) { 
 				//Clicked
 				System.out.println("Clicked");
 				cadenaTexto += "Click de ratón\n";
@@ -99,6 +100,7 @@ public class Ejercicio5App extends JFrame {
 		textArea.setBounds(10, 60, 414, 190);
 		contentPane.add(textArea);
 		
+		//Limpiar la lista de eventos
 		JButton btnNewButton = new JButton("Limpiar");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {

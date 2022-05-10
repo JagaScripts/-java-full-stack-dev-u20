@@ -77,8 +77,9 @@ public class Ejercicio1App extends JFrame {
 			@Override
 			public void stateChanged(ChangeEvent e) {
 				
-				
-				Integer valorSpinner = Integer.parseInt(spinner.getValue().toString()) * 2;
+				//Cogemos el valor del spinner y se lo multiplicamos x2 para que vaya mas rapido
+				Integer valorSpinner = Integer.parseInt(spinner.getValue().toString()) * 2; 
+				//Le sumamos a la anchura y altura el valor del spinner para que vaya creciendo
 				lblNewLabel.setBounds(MAXIMIZED_BOTH, ABORT, WIDTH + valorSpinner , HEIGHT + valorSpinner);
 				//tf.setText(spinner.getValue().toString());
 			}

@@ -80,22 +80,24 @@ public class Ejercicio7App extends JFrame {
 		textField_1.setColumns(10);
 		
 		JButton btnNewButton = new JButton("Pesetas a Euros");
+		//Accion para cambiar de pesetas a euros
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				DecimalFormat formato = new DecimalFormat("#.##"); 
 				
 				try {
+					//Si la condicion es falsa entra a pesetas a euros
 					if(!opcion) {
 						pesetas = Double.parseDouble(textField.getText());
 						euros = pesetas/166.386;
-						textField_1.setText(String.valueOf(formato.format(euros)));
-					}else {
+						textField_1.setText(String.valueOf(formato.format(euros)));//Se le añade el calculo al tf
+					}else {//Si no euros a pesetas
 						euros = Double.parseDouble(textField.getText());
 						pesetas = euros * 166.386;
-						textField_1.setText(String.valueOf(formato.format(pesetas)));
+						textField_1.setText(String.valueOf(formato.format(pesetas)));//Se le añade el calculo al tf
 					}
 				} catch (Exception e2) {
-					// TODO: handle exception
+					//Si no introduce numeros correctos salta el error
 					JOptionPane.showMessageDialog(null, "Error en los numeros introducidos");
 				}
 				
@@ -108,10 +110,10 @@ public class Ejercicio7App extends JFrame {
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				if(opcion) {
+				if(opcion) {//Cuando este en true (euros a pesetas) cambia a pesetas a euros
 					btnNewButton.setText("Pesetas a Euros");
 					opcion = false;
-				}else {
+				}else {//Si es falsa cambia a euros a pesetas
 					btnNewButton.setText("Euros a Pesetas");
 					opcion = true;
 				}

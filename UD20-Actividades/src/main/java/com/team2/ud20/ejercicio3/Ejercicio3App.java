@@ -74,11 +74,13 @@ public class Ejercicio3App extends JFrame {
 		lblNewLabel_1.setBounds(34, 129, 294, 14);
 		contentPane.add(lblNewLabel_1);
 		
+		//Si se pulsa el boton 2 se suma al contador y se setea al texto
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				lblNewLabel.setText("El " + btnNewButton.getText() + " se ha pusado " + ++contador1 + " veces" );
 			}
 		});
+		//Si se pulsa el boton 1 se suma al contador y se setea al texto
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				lblNewLabel_1.setText("El " + btnNewButton_1.getText() + " se ha pusado " + ++contador2 + " veces" );
